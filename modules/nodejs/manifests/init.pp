@@ -7,4 +7,7 @@ class nodejs (
   package { 'nodejs':
     ensure => latest
   }
+  package { 'npm':
+    ensure => latest
+  }
 }
