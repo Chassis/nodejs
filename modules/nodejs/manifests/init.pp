@@ -5,9 +5,11 @@ class nodejs (
     ensure => latest
   }
   package { 'nodejs':
-    ensure => latest
+    ensure  => latest,
+    require => Exec['node update']
   }
-  package { 'npm':
-    ensure => latest
+  exec { 'node update':
+    command => "/usr/bin/curl -sL https://deb.nodesource.com/setup | sudo bash -",
+    require => Package['curl']
   }
 }
