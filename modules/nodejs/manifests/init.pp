@@ -9,7 +9,7 @@ class nodejs (
     require => Exec['node update']
   }
   exec { 'node update':
-    command => "/usr/bin/curl -sL https://deb.nodesource.com/setup | sudo bash -",
+    command => "/usr/bin/curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -",
     require => Package['curl']
   }
 }
