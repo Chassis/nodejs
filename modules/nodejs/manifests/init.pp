@@ -1,9 +1,15 @@
 class nodejs (
   $path = "/vagrant/extensions/nodejs"
 ) {
-  package { 'clang-3.4':
-    ensure => latest
+  if $lsbdistcodename == 'xenial' {
+    $clang_package = '3.8'
   }
+  else {
+    $clang_package = "3.4"
+  }
+  package { "clang-${$clang_package}":
+		ensure  => latest,
+	}
   package { 'nodejs':
     ensure  => latest,
     require => Exec['node update']
