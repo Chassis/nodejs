@@ -12,7 +12,7 @@ class nodejs (
     ensure => latest,
   }
   package { 'nodejs':
-    ensure => latest,
+    ensure  => latest,
     require => Exec['node update']
   }
   exec { 'node update':
