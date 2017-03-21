@@ -1,0 +1,9 @@
+language: ruby
+
+cache: bundler
+
+install:
+  - gem install puppet-lint
+
+script:
+  - puppet-lint --fail-on-warnings modules
