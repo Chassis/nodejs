@@ -1,3 +1,4 @@
+# Install NodeJS
 class nodejs (
   $path = '/vagrant/extensions/nodejs'
 ) {
