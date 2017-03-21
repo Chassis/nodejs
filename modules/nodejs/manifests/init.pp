@@ -1,5 +1,5 @@
 class nodejs (
-  $path = "/vagrant/extensions/nodejs"
+	$path = "/vagrant/extensions/nodejs"
 ) {
 if $lsbdistcodename == 'xenial' {
 	$clang_package = '3.8'
