@@ -8,10 +8,10 @@ class nodejs (
 		$clang_package = "3.4"
 	}
 	package { "clang-${$clang_package}":
-		ensure	=> latest,
+		ensure => latest,
 	}
 	package { 'nodejs':
-		ensure	=> latest,
+		ensure => latest,
 		require => Exec['node update']
 	}
 	exec { 'node update':
