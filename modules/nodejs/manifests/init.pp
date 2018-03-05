@@ -2,7 +2,7 @@
 class nodejs (
 	$path = '/vagrant/extensions/nodejs'
 ) {
-	if ( ! empty($::nodejs_config[disabled_extensions]) and 'xdebug' in $::nodejs_config[disabled_extensions] ) {
+	if ( ! empty($::nodejs_config[disabled_extensions]) and 'chassis/nodejs' in $::nodejs_config[disabled_extensions] ) {
 		$package = absent
 		$file = absent
 	} else {
@@ -30,6 +30,13 @@ class nodejs (
 			require => Exec['node update']
 		}
 	} else {
-		notice("Uninstall node and npm")
+		exec { 'node uninstall':
+			path    => [ '/bin/', '/sbin/', '/usr/bin/', '/usr/sbin/' ],
+			command => 'rm -rf /usr/local/bin/npm /usr/local/share/man/man1/node* /usr/local/lib/dtrace/node.d ~/.npm ~/.node-gyp'
+		}
+		package { 'nodejs':
+			ensure  => $package,
+			require => Exec['node uninstall']
+		}
 	}
 }
