@@ -1,8 +1,9 @@
 # Install NodeJS
 class nodejs (
+	$config,
 	$path = '/vagrant/extensions/nodejs'
 ) {
-	if ( ! empty($::nodejs_config[disabled_extensions]) and 'chassis/nodejs' in $::nodejs_config[disabled_extensions] ) {
+	if ( ! empty($config[disabled_extensions]) and 'chassis/nodejs' in $config[disabled_extensions] ) {
 		$package = absent
 		$file = absent
 	} else {
