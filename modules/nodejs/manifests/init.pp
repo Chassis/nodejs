@@ -10,8 +10,8 @@ class nodejs (
 		$package = latest
 		$file = 'present'
 	}
-	if $::lsbdistcodename == 'xenial' {
-		$clang_package = '3.8'
+	if $::lsbdistcodename == 'xenial' or $::lsbdistcodename == 'bionic' {
+		$clang_package = '6.0'
 	}
 	else {
 		$clang_package = '3.4'
