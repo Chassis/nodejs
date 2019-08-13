@@ -22,7 +22,7 @@ class nodejs (
 	if ( 'latest' == $package ) {
 		exec { 'node update':
 			path    => [ '/bin/', '/sbin/', '/usr/bin/', '/usr/sbin/' ],
-			command => '/usr/bin/curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -',
+			command => '/usr/bin/curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -',
 			require => Package['curl'],
 			unless  => 'which node'
 		}
