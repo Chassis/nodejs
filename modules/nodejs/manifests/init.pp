@@ -24,11 +24,11 @@ class nodejs (
 			path    => [ '/bin/', '/sbin/', '/usr/bin/', '/usr/sbin/' ],
 			command => '/usr/bin/curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -',
 			require => Package['curl'],
-			unless  => 'node -v | grep 12.'
+			unless  => 'which node'
 		}
 		package { 'nodejs':
 			ensure  => $package,
-			require => Exec['node update']
+			require => [ Exec['node update'], Class['apt::update'] ]
 		}
 	} else {
 		exec { 'node uninstall':
