@@ -28,7 +28,7 @@ class nodejs (
 		}
 		package { 'nodejs':
 			ensure  => $package,
-			require => [ Exec['node update'], Class['apt::update'] ]
+			require => Exec['node update']
 		}
 	} else {
 		exec { 'node uninstall':
