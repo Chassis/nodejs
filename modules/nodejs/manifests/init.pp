@@ -10,7 +10,7 @@ class nodejs (
 		$package = latest
 		$file = 'present'
 	}
-	if $::lsbdistcodename == 'xenial' or $::lsbdistcodename == 'bionic' or $::lsbdistcodename == 'focal' or $::lsbdistcodename == 'focal' or $::lsbdistcodename == 'jammy' {
+	if $::lsbdistcodename == 'xenial' or $::lsbdistcodename == 'bionic' or $::lsbdistcodename == 'focal' or $::lsbdistcodename == 'jammy' {
 		$clang_package = '12'
 	}
 	else {
@@ -22,7 +22,7 @@ class nodejs (
 	if ( 'latest' == $package ) {
 		exec { 'node update':
 			path    => [ '/bin/', '/sbin/', '/usr/bin/', '/usr/sbin/' ],
-			command => '/usr/bin/curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -',
+			command => '/usr/bin/curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -',
 			require => Package['curl'],
 			unless  => 'which node'
 		}
