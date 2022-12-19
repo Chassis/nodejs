@@ -1,10 +1,41 @@
-# Node JS
-A Chassis extension to install and configure
-[Nodejs](https://nodejs.org/) on your server.
+# Nodejs extension for Chassis
 
-## Usage
-1. Add this extension to your extensions directory. `git clone git@github.com:Chassis/nodejs.git extensions/nodejs`
-2. Run `vagrant provision`
-3. Node.js has been installed on your Chassis VM!
+Install Nodejs within your [Chassis](http://chassis.io/) box! The PHPUnit extension automatically sets up your Chassis instance with the `phpunit` executable, for use running PHP unit tests.
 
-That's it!
+## Activation
+
+### Automated Installation
+
+To add the phpunit extension to a Chassis box, include `chassis/nodejs` in the `extensions` list within your `config.local.yaml` file:
+
+```yml
+extensions:
+    - chassis/nodejs
+```
+
+Then run `vagrant provision` to instruct Chassis to download and install the new extension.
+
+### Manual Installation
+
+Ensure you have a Chassis instance set up locally already.
+
+```
+# In your Chassis dir:
+cd extensions
+
+# Grab the extension
+git clone --recursive https://github.com/Chassis/nodejs.git nodejs
+
+# Reprovision
+cd ..
+vagrant provision
+```
+
+## Specifying a major version
+
+To specify a version of Nodejs to install, add the major version to a Chassis config file:
+
+```
+nodejs:
+  version: 16
+```
