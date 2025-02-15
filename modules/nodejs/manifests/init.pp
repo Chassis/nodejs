@@ -22,7 +22,7 @@ class nodejs (
 	if ( $config[nodejs] and $config[nodejs][version] != undef ) {
 		$node_version = $config[nodejs][version]
 	} else {
-		$node_version = 18
+		$node_version = 22
 	}
 	if ( 'latest' == $package ) {
 		exec { 'node update':
